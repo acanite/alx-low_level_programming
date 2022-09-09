@@ -2,8 +2,8 @@
 
 /**
  * main - prints the alphabet in lowercase,
- * followed by a new line, execpt q and e
- * Return: Always 0 (success)
+ * followed by a new line, except q and e
+ * Return: Aways 0 (Sucess)
  */
 int main(void)
 {
@@ -13,11 +13,10 @@ int main(void)
 	{
 		if (ch != 'e' && ch != 'q')
 		{
-			putchar(ch);
+			putchar(ch);			
 		}
 		ch++;
 	}
 	putchar('\n');
-	return(0);
+	return (0);
 }
-	
