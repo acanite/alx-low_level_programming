@@ -1,26 +1,26 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * leet - encode
- * @s: pointer to char params
- * Return: *s
+ * leet - Encode to 1337
+ * @n: string to be changed
+ * Return: Converted string
  */
 
-char *leet(char *s)
+char *leet(char *n)
 {
-	int i;
-	int j;
-	char l[] = "ol_ea__t";
+	int i, j;
+	char s1[] = "aAeEoOtTlL";
+	char s2[] = "4433007711";
 
-	for (i = 0; s[i] != '\0'; i++)
+	for (i = 0; n[i] != '\0'; i++)
 	{
-		for (j = 0; l[j] != '\0'; j++)
+		for (j = 0; j < 10; j++)
 		{
-			if (s[i] == l[j] || s[i] == (l[j] - 32))
+			if (n[i] == s1[j])
 			{
-				s[i] = j + '0';
+				n[i] = s2[j];
 			}
 		}
 	}
-	return (s);
+	return (n);
 }
