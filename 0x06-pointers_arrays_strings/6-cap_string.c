@@ -1,42 +1,32 @@
 #include "main.h"
-
 /**
- * cap_string - Capitalizes words on a string
- * @n: string to convert character from
- * Return: Converted string
- */
-
-char *cap_string(char *n)
+*cap_string - function that capitalize first character of a word
+*@str: string to capitalize
+*Return:returns the capitalized string
+*/
+char *cap_string(char *str)
 {
-	int i;
-	
-	i = 0;
-	if (n[0] >= 'a' && n[0] <= 'z')
+	int index = 0;
+
+	while (str[++index])
 	{
-		n[0] = n[0] - 32;
+		while (!(str[index] >= 'a' && str[index] <= 'z'))
+			index++;
+
+		if (str[index - 1] == ' ' ||
+				str[index - 1] == '\t' ||
+				str[index - 1] == '\n' ||
+				str[index - 1] == ',' ||
+				str[index - 1] == ';' ||
+				str[index - 1] == '.' ||
+				str[index - 1] == '!' ||
+				str[index - 1] == '?' ||
+				str[index - 1] == '"' ||
+				str[index - 1] == '(' ||
+				str[index - 1] == ')' ||
+				str[index - 1] == '{' ||
+				str[index - 1] == '}')
+			str[index] -= 32;
 	}
-	for (i = 0; n[i] != '\0'; i++)
-	{
-		switch (n[i])
-		{
-			case ',':
-			case ';':
-			case '.':
-			case '!':
-			case '?':
-			case '"':
-			case '(':
-			case ')':
-			case '{':
-			case '}':
-			case ' ':
-			case '\n':
-			case '\t':
-				if (n[i + 1] > 96 && n[i + 1] < 123)
-				{
-					n[i + 1] = n[i + 1] - 32;
-				}
-		}
-	}
-	return (n);
+	return (str);
 }
