@@ -1,4 +1,5 @@
 #include "main.h"
+<<<<<<< HEAD
 #include <stdlib.h>
 
 /**
@@ -134,4 +135,15 @@ int main(int argc, char *argv[])
 	}
 }_print(a, 1n - 1);
 return (0)
+=======
+
+/**
+ * main - does nothing
+ *
+ * Return: Always 1
+ */
+int main(void)
+{
+	return (1);
+>>>>>>> 02b2599fa4eba8c4ce3f3925c47ba6765fbd0557
 }
