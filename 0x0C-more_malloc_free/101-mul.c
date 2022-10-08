@@ -92,4 +92,24 @@ int get_digits(char c)
 */
 void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
+	int mult_len, num, tens = 0;
+	
+	mult_len = find_len(mult) - 1;
+	mult + = mult_len;
+	
+	while(*prod)
+	{
+		*prod = 'x';
+		prod++;
+	}
+	
+	prod--;
+	
+	while(zeroes--)
+	{
+		*prod = '0';
+		prod--;
+	}
+	
+for(;mult_len > = 0; mult_len--, mult--, prod--)
 	
