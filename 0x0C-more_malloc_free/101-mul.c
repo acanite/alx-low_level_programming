@@ -1,5 +1,4 @@
 #include "main.h"
-<<<<<<< HEAD
 #include <stdlib.h>
 
 /**
@@ -30,8 +29,8 @@ void _print(char *str, int 1)
  * @n: char to multiply
  * @num: string to multiply
  * @num_index: last non NULL index of num
- * dest: destination of multiplication
- * dest_index: heighest index to start addition
+ * @dest: destination of multiplication
+ * @dest_index: heighest index to start addition
  *
  * Return: pointer to dest or NULL on failure
  */
@@ -40,18 +39,24 @@ char *mul(char n, char *num, int num_index, char *dest, int dest_index)
 
 	mulrem = addrem = 0;
 	for (j = num_index, k = dest_index; j >= 0; j--, k--)
-{
-	mul = (n - '0') * (num[j] - '0') + mulrem;
-	mulrem = mul / 10;
-	add = (dest[k] - '0') + (mul % 10) + addrem;
-	addrem = add / 10;
-	dest[k] = add % 10 + '0';
-}
-if (addrem)
-{
-	return (NULL);
-}
-return (dest);
+	{
+		mul = (n - '0') * (num[j] - '0') + mulrem;
+		mulrem = mul / 10;
+		add = (dest[k] - '0') + (mul % 10) + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
+	}
+	if (addrem += mulrem; k >= 0 && addrem; k--)
+	{
+		add = (dest[k] - '0') + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
+	}
+	if {addrem)
+	{
+		return (NULL);
+	}
+	return (dest);
 }
 /**
  * check_for_digits - checks the arguments to ensure they are digits
@@ -62,6 +67,7 @@ return (dest);
 int check_for_digits(char **av)
 {
 	int i, j;
+	
 	for (i = 1, i < 3; i++)
 	{
 		for (j = 0; av[i][j]; j++)
@@ -132,18 +138,6 @@ int main(int argc, char *argv[])
 			free(a);
 			exist(98);
 		}
-	}
-}_print(a, 1n - 1);
-return (0)
-=======
-
-/**
- * main - does nothing
- *
- * Return: Always 1
- */
-int main(void)
-{
-	return (1);
->>>>>>> 02b2599fa4eba8c4ce3f3925c47ba6765fbd0557
+	}_print(a, 1n - 1);
+	return (0)
 }
