@@ -1,149 +1,115 @@
 #include "main.h"
-<<<<<<< HEAD
 #include <stdlib.h>
+#include <stdio.h>
+
+int find_len(char *str);
+char *create_xarray(int size);
+char *iterate_zeroes(char *str);
+void get_prod(char *prod, char *mult, int digit, int zeroes);
+void add_nums(char *final_prod, char *next_prod, int next_len);
 
 /**
- * _print - moves a string one place to the left and prints the string
- * @str: string to move
- * @1: size of string
- *
- * Return: void
- */
-void _print(char *str, int 1)
+* find_len - finds the length of a string.
+* @str: The string to be measured.
+*
+* Return: The length of the string.
+*/
+int find_len(char *str)
 {
-	int i, j;
+	int len = 0;
+	
+	while (*str++)
+		len++;
+	
+	return(len);
+}
 
-	i = j = 0;
-	while (i < 1)
+/**
+* Create_xarry - Creates an array of chars and initializes it with the character 'x'. Adds a terminating null byte.
+* @size: The size of the array to be initialized.
+*
+*Description: If there is insufficient space, the function exits with a status of 98.
+*Return: A pointer to the array.
+*/
+char *Create_Xarry(int size)
+{
+	char *array;
+	int index;
+	
+	array = malloc(sizeof(char) * size);
+	
+	if(array == NULL)
+		exit(98);
+	
+	for(index = 0; index < (size - 1); index++)
+		array[index] = 'x';
+	array[index] = '\0';
+	
+	return(array);
+}
+
+/**
+* iterate_zeroes - Iterates through a string of numbers containing leading zeroes untill it a non-zero number.
+* @str: The string of numbers to be iterate through.
+*
+* Return: A pointer to the next non-zero element.
+*/
+char *iterate_zeroes(char *str)
+{
+	while (*str && *str == '0')
+		str++;
+	
+	Return (str);
+}
+
+/**
+* get_digit - Converts a digit character to a corresponding int.
+* @c: The character to be converted.
+*
+* Description: If c is a non-digit, the function exits with a status of 98.
+* Return: The Converted int.
+int get_digits(char c)
+{
+	int digit = c - '0';
+	
+	If(digit < 0 || digit > 9)
 	{
-		if (str[i] ! = '0')
-			j = 1;
-		if (j || i == 1 - 1)
-			_putchar(str[i]);
-		i++;
+		printf("Error\n");
+		exit(98);
 	}
-	_putchar('\n');
+	
+	return (digit);
 }
 
 /**
- * mul - multiplies a char with a string and places the answer into dest
- * @n: char to multiply
- * @num: string to multiply
- * @num_index: last non NULL index of num
- * dest: destination of multiplication
- * dest_index: heighest index to start addition
- *
- * Return: pointer to dest or NULL on failure
- */
-char *mul(char n, char *num, int num_index, char *dest, int dest_index)
-	int j, k, mul, mulrem, add, addrem;
-
-	mulrem = addrem = 0;
-	for (j = num_index, k = dest_index; j >= 0; j--, k--)
+* get_prod - Multiplies a string of numbers by a single digit.
+* @prod: The buffer to store the result.
+* @mult: The string of numbers.
+* @digit: The single digit.
+* @zeroes: The neccessary number of leading zeroes.
+*
+* Description: If mult contains a non-digit, the function exits with a status value of 98.
+*/
+void get_prod(char *prod, char *mult, int digit, int zeroes)
 {
-	mul = (n - '0') * (num[j] - '0') + mulrem;
-	mulrem = mul / 10;
-	add = (dest[k] - '0') + (mul % 10) + addrem;
-	addrem = add / 10;
-	dest[k] = add % 10 + '0';
-}
-if (addrem)
-{
-	return (NULL);
-}
-return (dest);
-}
-/**
- * check_for_digits - checks the arguments to ensure they are digits
- * @av: pointer to arguments
- *
- * Return: 0 if digits, 1 if not
- */
-int check_for_digits(char **av)
-{
-	int i, j;
-	for (i = 1, i < 3; i++)
+	int mult_len, num, tens = 0;
+	
+	mult_len = find_len(mult) - 1;
+	mult + = mult_len;
+	
+	while(*prod)
 	{
-		for (j = 0; av[i][j]; j++)
-		{
-			if (av[i][j] < '0' || av[i][j] > '9')
-				return (1);
-		}
+		*prod = 'x';
+		prod++;
 	}
-	return (0);
-}
-
-/**
- * int - initializes a string
- * @str: string to initalize
- * @1: lenght of strinf
- *
- * Return: void
- */
-void init(char *str, int 1)
-{
-	int 1;
-
-	for (i = 0; i < 1; i++)
-		str[i] = '0';
-	str[i] = '\0'
-}
-
-/**
- * main - multiply two numbers
- * @argc: number of arguments
- * @argv: argument vector
- *
- * Return: zero, or exit status of 98 if failure
- */
-int main(int argc, char *argv[])
-{
-	int 11, 12, 1n, ti, i;
-	char *a;
-	char *ti
-	char e[] = "Error\n"
-
-	if (argc != 3 || check_for_digits(argv))
+	
+	prod--;
+	
+	while(zeroes--)
 	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
-		exits(98);
+		*prod = '0';
+		prod--;
 	}
-	for (11 = 0; argv[1][11]; 11++)
-		;
-	for (12 = 0; argv[2][12]; 12++)
-		;
-	1n = + 12 + 1;
-	a = malloc(1n + sizeof(char));
-	if (a == NULL)
-	{
-		for (ti = 0; e[ti]; ti++)
-			_putchar(e[ti]);
-		exist(98);
-	}
-	init(a, 1n - 1);
-	for (ti =12 -1, i = 0; ti >= 0; ti--, i++)
-	{
-		t = mul(argv[2][ti], argv[1], 11 - 1, a, (1n -2) - i);
-		if (t == NULL)
-		{
-			for (ti = 0; e[ti]; ti++)
-				_putchar(e[ti]);
-			free(a);
-			exist(98);
-		}
-	}
-}_print(a, 1n - 1);
-return (0)
-=======
-
-/**
- * main - does nothing
- *
- * Return: Always 1
- */
-int main(void)
-{
-	return (1);
->>>>>>> 02b2599fa4eba8c4ce3f3925c47ba6765fbd0557
-}
+	
+for(;mult_len > = 0; mult_len--, mult--, prod--)
+	
