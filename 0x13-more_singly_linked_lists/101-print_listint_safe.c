@@ -1,53 +1,61 @@
 #include "lists.h"
 
 /**
- * interval - checks if the linked list has not looped
+ * _r - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new: new node to add to the list
  *
- * @begin: the begining of the list
- * @node: the current node
- * @i: the interval that should be at current position
- *
- * Return: 1 if interval is correct, 0 if there is a loop
- */
+ * Return: pointer to the new list
+*/
 
-size_t	interval(const listint_t *begin, const listint_t *node, size_t i)
+const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
 {
-	size_t check = 0;
+	const listint_t **newlist;
+	size_t i;
 
-	while (begin != node)
+	newlist = malloc(size * sizeof(listint_t *));
+	if (newlist == NULL)
 	{
-		begin = begin->next;
-		check++;
+		free(list);
+		exit(98);
 	}
-
-	return ((check == i) ? 1 : 0);
+	for (i = 0; i < size - 1; i++)
+		newlist[i] = list[i];
+	newlist[i] = new;
+	free(list);
+	return (newlist);
 }
 
 /**
- * print_listint_safe - prints a listint_t linked list
- *
- * @head: the listint_t argument (head)
+ * print_listint_safe - prints a listint_t linked list.
+ * @head: pointer to the start of the list
  *
  * Return: the number of nodes in the list
- */
+*/
 
-size_t	print_listint_safe(const listint_t *head)
+size_t print_listint_safe(const listint_t *head)
 {
-	size_t count = 0;
-	const listint_t *begin = head;
+	size_t i, n = 0;
+	const listint_t **list = NULL;
 
-	if (head)
+	while (head != NULL)
 	{
-		while (head && interval(begin, head, count))
+		for (i = 0; i < n; i++)
 		{
-			printf("[%p] %d\n", (void *)head, head->n);
-			head = head->next;
-
-			count++;
+			if (head == list[i])
+			{
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free(list);
+				return (n);
+			}
 		}
-
-		if (head)
-			printf("-> [%p] %d\n", (void *)head, head->n);
+		n++;
+		list = _r(list, n, head);
+		printf("[%p] %d\n", (void *)head, head->n);
+		head = head->next;
 	}
-	return (count);
+	free(list);
+	return (n);
 }
