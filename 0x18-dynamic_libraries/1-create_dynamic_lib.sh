@@ -1,1 +1,1 @@
-/user/bin/bash: Eixt 126.
+/user/bin/bash:Eixt 126.
