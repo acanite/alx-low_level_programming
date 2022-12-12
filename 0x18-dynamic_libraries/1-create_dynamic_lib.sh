@@ -1,3 +1,1 @@
-#!/bin/bash
-gcc *.c -c -fPIC
-gcc *.o -shared -o liball.so
+/user/bin/bash: Eixt 126.
