@@ -2,8 +2,8 @@
 
 /**
  * hash_table_delete - deletes a hash table
- * @ht: is the hash table
-**/
+ * @ht: A pointer to a hash table.
+*/
 
 void hash_table_delete(hash_table_t *ht)
 {
